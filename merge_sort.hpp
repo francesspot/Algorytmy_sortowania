@@ -1,15 +1,16 @@
+#ifndef MERGE_SORT_HPP
+#define MERGE_SORT_HPP
+
 #include <iostream>
 #include <cstdlib>
 #include <vector>
 
-using namespace std;
-
 template <typename T>
-void merge(vector<T>& arr, int left, int mid, int right, bool ascending = true) {
+void merge(std::vector<T>& arr, int left, int mid, int right, bool ascending = true) {
     int i = left;
     int j = mid + 1;
 
-    vector<T> tempArr(right - left + 1);
+    std::vector<T> tempArr(right - left + 1);
     int k = 0;
     while (i <= mid && j <= right) {
         if ((ascending && arr[i] <= arr[j]) || (!ascending && arr[i] >= arr[j])) {
@@ -33,7 +34,7 @@ void merge(vector<T>& arr, int left, int mid, int right, bool ascending = true) 
 }
 
 template <typename T>
-void mergeSort(vector<T>& arr, int left, int right, bool ascending = true) {
+void mergeSort(std::vector<T>& arr, int left, int right, bool ascending = true) {
     if (left >= right)
         return;
     
@@ -43,3 +44,5 @@ void mergeSort(vector<T>& arr, int left, int right, bool ascending = true) {
       
     merge(arr, left, mid, right, ascending);
 }
+
+#endif

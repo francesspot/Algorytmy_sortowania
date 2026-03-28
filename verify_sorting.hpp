@@ -1,20 +1,21 @@
+#ifndef VERIFY_SORTING_HPP
+#define VERIFY_SORTING_HPP
+
 #include <iostream>
 #include <cstdlib>
 #include <vector>
 
-using namespace std;
-
 
 template <typename T>
-void printArray(vector<T>& arr) {
+void printArray(std::vector<T>& arr) {
   for (int i = 0; i < arr.size() - 1; i++) {
-    cout << arr[i] << " ";
+    std::cout << arr[i] << " ";
   }
-  cout << endl;
+  std::cout << std::endl;
 }
 
 template <typename T>
-bool isSortedLarge(vector<T>& arr, bool ascending = true) {
+bool isSorted(std::vector<T>& arr, bool ascending = true) {
   for (int i = 0; i < arr.size() - 1; i++) {
     if ((ascending && arr[i] > arr[i + 1]) || (!ascending && arr[i] < arr[i + 1])) {
       return false;
@@ -22,3 +23,5 @@ bool isSortedLarge(vector<T>& arr, bool ascending = true) {
   }
   return true;
 }
+
+#endif

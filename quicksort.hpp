@@ -1,11 +1,12 @@
+#ifndef QUICKSORT_HPP
+#define QUICKSORT_HPP
+
 #include <iostream>
 #include <cstdlib>
 #include <vector>
 
-using namespace std;
-
 template <typename T>
-void quickSort(vector<T>& arr, int left, int right, bool ascending = true) {
+void quickSort(std::vector<T>& arr, int left, int right, bool ascending = true) {
     
   if (left >= right)
     return;
@@ -25,7 +26,7 @@ void quickSort(vector<T>& arr, int left, int right, bool ascending = true) {
 
 
     if (i <= j) {
-      swap(arr[i], arr[j]);
+      std::swap(arr[i], arr[j]);
       i++;
       j--;
     }
@@ -40,3 +41,4 @@ void quickSort(vector<T>& arr, int left, int right, bool ascending = true) {
   }
 }
 
+#endif

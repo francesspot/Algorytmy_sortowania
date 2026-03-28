@@ -1,19 +1,21 @@
+#ifndef INTROSORT_HPP
+#define INTROSORT_HPP
+
 #include <iostream>
 #include <cstdlib>
 #include <vector>
 #include <cmath>
 #include "heap_sort.hpp"
 
-using namespace std;
-
 template <typename T>
-void introSort(vector<T>& arr, int left, int right, bool ascending = true, int depthlimit = -1) {
+void introSort(std::vector<T>& arr, int left, int right, bool ascending = true, int depthlimit = -1) {
   if (left >= right) {
     return;
   }
 
   if (depthlimit < 0) {
-    depthlimit = 2 * (int)log2(right - left + 1);
+    int n = right - left + 1;
+    depthlimit = 2 * static_cast<int>(std::log2(n));
   }
 
   if (depthlimit == 0) {
@@ -36,7 +38,7 @@ void introSort(vector<T>& arr, int left, int right, bool ascending = true, int d
 
 
     if (i <= j) {
-      swap(arr[i], arr[j]);
+      std::swap(arr[i], arr[j]);
       i++;
       j--;
     }
@@ -49,3 +51,5 @@ void introSort(vector<T>& arr, int left, int right, bool ascending = true, int d
     introSort(arr, i, right, ascending, depthlimit - 1);
   }
 }
+
+#endif
