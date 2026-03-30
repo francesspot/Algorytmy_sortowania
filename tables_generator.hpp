@@ -39,4 +39,21 @@ std::vector<T> generateReverseSortedArray(int n, T minValue = 0, T maxValue = 10
   return arr;
 }
 
+template <typename T>
+std::vector<T> generateCaseArray(int n, double sortedPercentage = 0.0, bool reverse = false) {
+
+  const T minValue = 0;
+  const T maxValue = 1000000;
+
+  if (reverse) {
+    return generateReverseSortedArray<T>(n, minValue, maxValue);
+  }
+
+  if (sortedPercentage > 0.0) {
+    return generatePartiallySortedArray<T>(n, minValue, maxValue, sortedPercentage);
+  }
+
+  return generateRandomArray<T>(n, minValue, maxValue);
+}
+
 #endif
