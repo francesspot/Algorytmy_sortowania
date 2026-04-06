@@ -5,7 +5,7 @@
 #include <cstdlib>
 #include <vector>
 
-
+// Wypisanie tablicy (sprawdzenie sortowania dla małych rozmiarów)
 template <typename T>
 void printArray(std::vector<T>& arr) {
   for (int i = 0; i < arr.size() - 1; i++) {
@@ -14,6 +14,7 @@ void printArray(std::vector<T>& arr) {
   std::cout << std::endl;
 }
 
+// Sprawdzenie, czy tablica jest posortowana dla dużych rozmiarów
 template <typename T>
 bool isSorted(std::vector<T>& arr, bool ascending = true) {
   for (int i = 0; i < arr.size() - 1; i++) {
