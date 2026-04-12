@@ -7,6 +7,7 @@
 #include <sstream>
 #include <functional>
 #include <algorithm>
+#include <iomanip>
 
 // Import algorytmów
 #include "merge_sort.hpp"
@@ -67,7 +68,10 @@ void runTest(int n, const string& caseName, double sortedPercentage, bool revers
         double avgTime = sumTime / numOfTest; // Oblicz średni czas
         // Zapisz do pliku i wypisz w terminalu
         file << name << ";" << n << ";" << caseName << ";" << toString(avgTime) << ";" << toString(minTime) << ";" << toString(maxTime) << "\n";
-        cout << "  " << name << " | avg: " << avgTime << " | min: " << minTime << " | max: " << maxTime << "\n";
+        cout << "  " << left << setw(10) << name 
+             << " | avg: " << right << setw(6) << fixed << setprecision(3) << avgTime << " ms"
+             << " | min: " << setw(6) << minTime << " ms"
+             << " | max: " << setw(6) << maxTime << " ms\n";
     }
 }
 
@@ -97,6 +101,6 @@ int main() {
     }
 
     file.close();
-    cout << "\nTesty zakończone. Wyniki zapisane do results.csv\n";
+    cout << "\nTesty zakonczone. Wyniki zapisane do results.csv\n";
     return 0;
 }
