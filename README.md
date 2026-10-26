@@ -1,49 +1,29 @@
-**Polski** | [English](README.en.md)
+🇵🇱 **Polski** | 🇬🇧 [English](README.en.md)
 
-# Algorytmy sortowania — porównanie wydajności
+# ⚡ Algorytmy sortowania — benchmark
 
-Projekt w C++ porównujący wydajność trzech algorytmów sortowania — **Merge Sort**, **Quick Sort** i **IntroSort** — na tablicach różnej wielkości i o różnym stopniu wstępnego uporządkowania.
+![C++](https://img.shields.io/badge/C++-00599C?logo=cplusplus&logoColor=white) ![Excel](https://img.shields.io/badge/Excel-217346?logo=microsoftexcel&logoColor=white)
 
-## Algorytmy
+> 🎓 Projekt na przedmiot **Projektowanie i Analiza Algorytmów** (Politechnika Wrocławska)
 
-| Plik | Algorytm | Uwagi |
-|------|----------|-------|
-| `merge_sort.hpp` | Merge Sort | Rekurencyjny, top-down |
-| `quicksort.hpp` | Quick Sort | Podział w stylu Hoare'a, pivot — element środkowy |
-| `heap_sort.hpp` | Heap Sort | Używany jako zapasowy algorytm w IntroSorcie |
-| `introsort.hpp` | IntroSort | Quick Sort, który przechodzi na Heap Sort po przekroczeniu głębokości rekurencji `2·log₂(n)` |
+Zaimplementowałem od zera trzy algorytmy sortowania i sprawdziłem, który jest najszybszy — i kiedy. 🏁
 
-Wszystkie algorytmy są szablonami (`std::vector<T>`) i obsługują sortowanie rosnące oraz malejące.
+## ✨ Co zrobiłem
 
-## Scenariusze testowe
+- 🔀 **Merge Sort**, ⚡ **Quick Sort** i 🧠 **IntroSort** (Quick Sort, który przy zbyt głębokiej rekurencji przełącza się na 🏔️ **Heap Sort**) — wszystko jako szablony C++, sortowanie rosnące i malejące
+- 🧪 Benchmark na tablicach od **10 tys. do 1 mln** elementów: losowych, częściowo posortowanych (25% → 99,7%) i odwróconych
+- 🔁 Każdy przypadek mierzony **100 razy** (średnia, min, max) + automatyczne sprawdzanie, czy wynik jest poprawnie posortowany
+- 📊 Wyniki w CSV i wykresy w Excelu
 
-- **Rozmiary tablic:** 10 000, 50 000, 100 000, 500 000, 1 000 000 elementów
-- **Dane wejściowe:**
-  - wartości losowe (0–1 000 000),
-  - częściowo posortowane — pierwsze 25%, 50%, 75%, 95%, 99% i 99,7% tablicy już posortowane,
-  - posortowane odwrotnie.
-- Każdy przypadek jest uruchamiany **100 razy**; zapisywany jest czas średni, minimalny i maksymalny.
+## 🛠️ Technologie
 
-Po każdym sortowaniu sprawdzana jest poprawność wyniku (`verify_sorting.hpp`); tablice do 100 elementów są zamiast tego wypisywane.
+C++17 · `std::chrono` · `<random>` · Excel
 
-## Struktura projektu
-
-```
-main.cpp              – program testujący, zapisuje wyniki do results.csv
-tables_generator.hpp  – generowanie tablic losowych / częściowo posortowanych / odwróconych
-test_sorting.hpp      – pomiar czasu (std::chrono)
-verify_sorting.hpp    – sprawdzenie poprawności sortowania
-results.csv           – surowe wyniki (algorithm;size;case;avg;min;max, w ms)
-results_obrobka.*     – opracowane wyniki i wykresy (Excel)
-```
-
-## Kompilacja i uruchomienie
-
-Wymagany kompilator C++17 (użyte są structured bindings).
+## 🚀 Uruchomienie
 
 ```bash
 g++ -std=c++17 -O2 main.cpp -o main
 ./main
 ```
 
-Program wypisuje czasy dla każdego przypadku w terminalu i zapisuje je do `results.csv` (separator `;`, przecinek dziesiętny — gotowe do otwarcia w polskim Excelu).
+Wyniki trafiają do `results.csv`.
